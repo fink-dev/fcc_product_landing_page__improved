@@ -24,6 +24,10 @@
   padding-left: 25px; /* 3 */
   padding-right: 25px; /* 3 */
   width: 100%; /* 1 */
+
+  @include test-mixin(123px) {
+    max-width: 900px;
+  }
 }
 
 /**

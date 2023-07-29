@@ -56,3 +56,8 @@
          + 'Please make sure it is defined in `$breakpoints` map.';
   }
 }
+
+@mixin test-mixin($param) {
+  @warn "The param is: #{$param}";
+  @content;
+}
