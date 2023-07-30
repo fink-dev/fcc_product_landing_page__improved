@@ -25,6 +25,7 @@
   padding-right: 25px; /* 3 */
   width: 100%; /* 1 */
   background-color: rgb(207, 207, 207);
+  overflow: auto;
 
   @include respond-to(lg) {
     max-width: $max-width-lg;
