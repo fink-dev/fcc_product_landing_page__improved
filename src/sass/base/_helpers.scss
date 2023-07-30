@@ -24,10 +24,15 @@
   padding-left: 25px; /* 3 */
   padding-right: 25px; /* 3 */
   width: 100%; /* 1 */
+  background-color: rgb(207, 207, 207);
 
-  @include test-mixin(123px) {
-    max-width: 900px;
+  @include respond-to("large") {
+    max-width: 960px;
   }
+
+  // @include test-mixin(123px) {
+  //   max-width: 900px;
+  // }
 }
 
 /**
