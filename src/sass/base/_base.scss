@@ -1,12 +1,14 @@
 // -----------------------------------------------------------------------------
 // This file contains very basic styles.
 // -----------------------------------------------------------------------------
+// @import "sass:math";
 
 /**
  * Set up a decent box model on the root element
  */
 html {
   box-sizing: border-box;
+  font-size: percentage(calc(10 / 16)); /// 1rem = 16px;
 }
 
 /**
