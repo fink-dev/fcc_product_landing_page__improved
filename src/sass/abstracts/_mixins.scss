@@ -41,6 +41,8 @@
 @mixin respond-to($breakpoint) {
   $raw-query: map-get($breakpoints, $breakpoint);
 
+  // @error "$raw-query: #{$raw-query}";
+
   @if $raw-query {
     $query: if(
       type-of($raw-query) == "string",
@@ -48,11 +50,16 @@
       inspect($raw-query)
     );
 
-    @media #{$query} {
+    @media (min-width: #{$query}) {
       @content;
     }
   } @else {
     @error 'No value found for `#{$breakpoint}`. '
          + 'Please make sure it is defined in `$breakpoints` map.';
   }
+}
+
+@mixin test-mixin($param) {
+  @warn "The param is: #{$param}";
+  @content;
 }
