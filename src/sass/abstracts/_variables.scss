@@ -4,8 +4,9 @@
 
 /// Regular font family
 /// @type List
-$text-font-stack: "Open Sans", "Helvetica Neue Light", "Helvetica Neue",
-  "Helvetica", "Arial", sans-serif !default;
+// $text-font-stack: "Open Sans", "Helvetica Neue Light", "Helvetica Neue",
+//   "Helvetica", "Arial", sans-serif !default;
+$text-font-stack: "Wix Madefor Text", sans-serif;
 
 /// Code (monospace) font family
 /// @type List
@@ -31,6 +32,39 @@ $mid-grey: rgb(153, 153, 153) !default;
 /// Dark grey
 /// @type Color
 $dark-grey: rgb(68, 68, 68) !default;
+
+/// =========== Color ===============
+///
+/* Variables  */
+
+$color-white-1: #fff8f1ff;
+$color-white-0: #ffffffff;
+$color-brown-tan-desert_sand: #e2c8adff;
+$color-brown-tan-tequila: #ffe3d1ff;
+$color-brown-shadow: #947a62ff;
+$color-brown-cafe_noir: #4c3829ff;
+$color-brown-cashmere: #e4bf9dff;
+$color-brown-treehouse: #322015ff;
+$color-brown-walnut: #703c1bff;
+$color-brown-treehouse-2: #382418ff;
+
+/* Aliases  */
+
+$color--brand-background: $color-brown-tan-desert_sand;
+$color--shape-element: $color-brown-shadow;
+$color--paragraph--hero: $color-brown-tan-tequila;
+$color-header_title: $color-brown-treehouse;
+$color-hero-container-left: $color-brown-cafe_noir;
+$color-hero-shape: $color-brown-shadow;
+$color-hero-title: $color-white-1;
+$color-hero-subtitle: $color-brown-cashmere;
+$color-nav-link: $color-brown-treehouse;
+$color-nav-button-bg: $color-brown-cafe_noir;
+$color-nav-button-text: $color-white-1;
+$color-text-heading-2: $color-brown-walnut;
+$color-text-heading-3: $color-brown-walnut;
+$color-text-paragraph-text: $color-brown-treehouse-2;
+$color-text-heading-4: $color-brown-walnut;
 
 /// Container's maximum width
 /// @type Length

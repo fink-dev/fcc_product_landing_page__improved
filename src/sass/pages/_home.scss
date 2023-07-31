@@ -1,3 +1,148 @@
 // -----------------------------------------------------------------------------
 // This file contains styles that are specific to the home page.
 // -----------------------------------------------------------------------------
+body {
+  background-color: $color--brand-background;
+}
+
+.hero {
+  background-color: $color-hero-container-left;
+  color: $color--paragraph--hero;
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+
+    @include respond-to(md) {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr;
+      align-items: stretch;
+    }
+  }
+
+  &__left-container {
+    padding-right: 2rem;
+    padding-bottom: 7.6rem;
+
+    @include respond-to(md) {
+      //   align-items: start;
+    }
+
+    @include respond-to(lg) {
+      padding-right: 8rem;
+    }
+    @include respond-to(xxl) {
+      padding-bottom: 16.2rem;
+    }
+  }
+
+  &__shape-vert {
+    width: 4.2rem;
+    height: 7.6rem;
+    background-color: $color-brown-shadow;
+
+    @include respond-to(xxl) {
+      width: 5.3rem;
+      height: 10.8rem;
+    }
+  }
+
+  &__icon-infinity {
+    width: 4.2rem;
+    height: 4.2rem;
+
+    @include respond-to(xxl) {
+      width: 5.3rem;
+      height: 5.3rem;
+    }
+  }
+  &__subtitle {
+    margin-bottom: 0.8rem;
+    color: $color-hero-subtitle;
+    font-weight: 600;
+    font-size: 1.4rem;
+    letter-spacing: 0.4rem;
+
+    @include respond-to(lg) {
+      font-size: 1.64rem;
+    }
+    @include respond-to(xl) {
+      font-size: 1.9rem;
+    }
+    @include respond-to(xxl) {
+      font-size: 1.9rem;
+    }
+  }
+  &__title {
+    max-width: 36rem;
+    margin-bottom: 4.4rem;
+    // background-color: orange;
+    color: $color-hero-title;
+    font-size: 4rem;
+    font-weight: 800;
+    line-height: 107%;
+
+    @include respond-to(lg) {
+      font-size: 4.5rem;
+      max-width: none;
+    }
+
+    @include respond-to(xl) {
+      font-size: 5rem;
+      // max-width: 60rem;
+    }
+
+    @include respond-to(xxl) {
+      font-size: 5rem;
+      // max-width: 60rem;
+    }
+  }
+
+  &__horizontal-line {
+    $width: 300rem;
+
+    height: 1px;
+    width: $width;
+    position: absolute;
+    // left: 0;
+    transform: translateX(calc(19rem - #{$width})) translateY(-1.4rem);
+    margin-bottom: 5rem;
+    background-color: $color-brown-cashmere;
+
+    @include respond-to(lg) {
+      transform: translateX(calc(21rem - #{$width})) translateY(-1.5rem);
+    }
+
+    @include respond-to(xl) {
+      transform: translateX(calc(23.5rem - #{$width})) translateY(-1.5rem);
+    }
+  }
+
+  &__paragraph {
+    max-width: 100%;
+    line-height: 152%;
+    // margin-right: ;
+
+    @include respond-to(sm) {
+      max-width: 75%;
+    }
+
+    @include respond-to(md) {
+      max-width: 90%;
+    }
+    @include respond-to(lg) {
+      max-width: 100%;
+    }
+  }
+
+  img {
+    // height: 300px;
+
+    object-fit: cover;
+    @include respond-to(md) {
+      // height: ;
+      // width: auto;
+    }
+  }
+}

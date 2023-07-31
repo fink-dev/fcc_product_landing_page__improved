@@ -1,3 +1,33 @@
 // -----------------------------------------------------------------------------
 // This file contains all styles related to the button component.
 // -----------------------------------------------------------------------------
+
+.button {
+  // &:link,
+  // &:visited
+  // {
+  display: inline-block;
+  border: 2px solid $color-brown-shadow;
+  padding: 1rem 2rem;
+  background-color: $color-brown-treehouse;
+  color: $color-brown-cashmere;
+  font-weight: 600;
+  // }
+  &--light {
+    // &:link,
+    // &:visited {
+    background-color: $color-brown-cashmere;
+    color: $color-brown-treehouse;
+    // }
+  }
+
+  &--text {
+    // &:link,
+    // &:visited {
+    border: none;
+    background-color: #00000000;
+    color: $color-brown-cashmere;
+    text-decoration: underline;
+    // }
+  }
+}

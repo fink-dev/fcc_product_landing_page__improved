@@ -1,3 +1,100 @@
 // -----------------------------------------------------------------------------
 // This file contains all styles related to the header of the site/application.
 // -----------------------------------------------------------------------------
+
+.header {
+  padding-block: 1rem;
+
+  &__box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    // grid-template-columns: 25rem 1fr;
+    // align-items: center;
+  }
+
+  &__logo-box {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 1.1rem;
+  }
+
+  &__logo {
+    width: 3.5rem;
+    display: flex;
+
+    img {
+      width: 100%;
+    }
+  }
+
+  &__title {
+    font-size: 2.1rem;
+    color: $color-header_title;
+    font-weight: 700;
+  }
+}
+
+.nav {
+  /* for showing hamburger menu */
+  width: -moz-fit-content;
+  width: fit-content;
+
+  &__hamburger {
+    width: 3.7rem;
+    display: flex;
+
+    @include respond-to(md) {
+      display: none;
+    }
+
+    img {
+      width: 100%;
+    }
+  }
+
+  /* for showing nav links */
+  @include respond-to(md) {
+    width: 57%;
+  }
+  @include respond-to(lg) {
+    width: 50%;
+  }
+  @include respond-to(xl) {
+    width: 45%;
+  }
+
+  &__links-container {
+    width: 100%;
+    display: none;
+    color: $color-nav-link;
+
+    @include respond-to(md) {
+      display: inline-block;
+    }
+  }
+
+  &__list {
+    display: flex;
+    // width: 40vw;
+    // flex-grow: 1;
+    // flex-shrink: 1;
+    justify-content: space-between;
+  }
+
+  &__item {
+    list-style: none;
+  }
+
+  &__link {
+    font-weight: 700;
+    &:link,
+    &:visited {
+      color: $color-nav-link;
+    }
+    &:hover {
+      color: $color-nav-link;
+    }
+  }
+}

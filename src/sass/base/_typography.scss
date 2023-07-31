@@ -3,6 +3,13 @@
  */
 body {
   color: $text-color;
-  font: normal 1.6rem $text-font-stack;
-  overflow: auto;
+  font: normal 1.4rem $text-font-stack;
+}
+
+h1 {
+  margin: 0;
+}
+
+p {
+  color: $color--paragraph--hero;
 }
