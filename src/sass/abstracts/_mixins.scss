@@ -1,6 +1,8 @@
 // -----------------------------------------------------------------------------
 // This file contains all application-wide Sass mixins.
 // -----------------------------------------------------------------------------
+@use "sass:map";
+@use "sass:list";
 
 /// Event wrapper
 /// @author Harry Roberts
@@ -56,6 +58,106 @@
   } @else {
     @error 'No value found for `#{$breakpoint}`. '
          + 'Please make sure it is defined in `$breakpoints` map.';
+  }
+}
+
+// Custom mixin to apply responsive styles based on multiple breakpoints.
+@mixin respond-to-multiple($cssObj) {
+  // Loop through each key-value pair in the input map.
+  @each $key, $value in $cssObj {
+    // Fetch the breakpoint value from the $breakpoints map using the current key.
+    $breakpoint: map-get($breakpoints, $key);
+    // Create a media query for the current breakpoint.
+    @media (min-width: #{$breakpoint}) {
+      // Loop through each key-value pair in the nested map (CSS properties for the current breakpoint).
+      @each $key2, $value2 in $value {
+        // Output the CSS properties and values within the media query.
+        #{$key2}: #{$value2};
+      }
+    }
+  }
+}
+
+@mixin respond-to-auto-xs($css1, $breakpoint2, $css2) {
+  @include respond-to-auto(xs, $css1, $breakpoint2, $css2);
+}
+
+// Custom mixin to apply responsive styles based on two breakpoints. It calculates intermediate values on the intermediate breakpoints.
+@mixin respond-to-auto($breakpoint1, $css1, $breakpoint2, $css2) {
+  // Fetch the pixel values for the first and second breakpoints.
+  $breakpoint-value1: map-get($breakpoints, $breakpoint1);
+  // @debug $breakpoint-value1;
+  $breakpoint-value2: map-get($breakpoints, $breakpoint2);
+  // @debug $breakpoint-value2;
+
+  // Initialize variables to store the indices of the breakpoints.
+  $breakpoint1-idx: null;
+  $breakpoint2-idx: null;
+  $i: 1;
+
+  // Find the indices of the first and second breakpoints in the $breakpoints map.
+  @each $key, $val in $breakpoints {
+    // @debug $key $i;
+    @if $key == $breakpoint1 {
+      $breakpoint1-idx: $i;
+    } @else if $key == $breakpoint2 {
+      $breakpoint2-idx: $i;
+    }
+
+    $i: $i + 1;
+  }
+
+  // @debug 'breakpoint1-idx' $breakpoint1-idx;
+  // @debug 'breakpoint2-idx' $breakpoint2-idx;
+
+  // Start the loop from the index of the first breakpoint and iterate until the second breakpoint.
+  $i: $breakpoint1-idx;
+  @while ($i <= $breakpoint2-idx) {
+    @if $i == $breakpoint1-idx {
+      @each $key1, $value1 in $css1 {
+        #{$key1}: #{$value1};
+      }
+    }
+    // Check if the current iteration is beyond the first breakpoint.
+    @else if $i > $breakpoint1-idx {
+      // Fetch the CSS properties and values for the current breakpoint.
+      $css: nth($breakpoints, $i);
+      $breakpoint: list.nth($css, 1);
+      $breakpoint-value: list.nth($css, 2);
+      @debug $breakpoint $breakpoint-value;
+
+      // Calculate and set the intermediate CSS property values using linear interpolation.
+      @media (min-width: #{$breakpoint-value}) {
+        @each $key1, $value1 in $css1 {
+          // @debug $key1 $value1 type-of($value1);
+
+          $min: $value1;
+          $max: map-get($css2, $key1);
+
+          /// min & max must not be null and both type should be number
+          @if $min!=null and
+            type-of($min) ==
+            "number" and
+            $max!=null and
+            type-of($max) ==
+            "number"
+          {
+            $value: calc(
+              $min +
+                ($breakpoint-value - $breakpoint-value1) /
+                ($breakpoint-value2 - $breakpoint-value1) *
+                ($max - $min)
+            );
+            @debug "bp:" $breakpoint-value "max-bp:" $breakpoint-value2 "min:"
+              $min "max:" $max "value:" $value;
+
+            #{$key1}: #{$value};
+          }
+        }
+      }
+    }
+
+    $i: $i + 1;
   }
 }
 

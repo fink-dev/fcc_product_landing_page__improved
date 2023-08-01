@@ -66,8 +66,16 @@ $color-text-heading-3: $color-brown-walnut;
 $color-text-paragraph-text: $color-brown-treehouse-2;
 $color-text-heading-4: $color-brown-walnut;
 
+$xs: "xs";
+$sm: "sm";
+$md: "md";
+$lg: "lg";
+$xl: "xl";
+$xxl: "xxl";
+
 /// Container's maximum width
 /// @type Length
+///
 
 $max-width-sm: 540px;
 $max-width-md: 720px;
@@ -81,11 +89,13 @@ $max-width: 1180px !default;
 /// @prop {String} keys - Keys are identifiers mapped to a given length
 /// @prop {Map} values - Values are actual breakpoints expressed in pixels
 $breakpoints: (
-  "sm": 576px,
-  "md": 768px,
-  "lg": 1024px,
-  "xl": 1200px,
-  "xxl": 1400px,
+  xs: 0px,
+  sm: 576px,
+  md: 870px,
+  //768px, bootstrap
+  lg: 1024px,
+  xl: 1200px,
+  xxl: 1400px,
 ) !default;
 
 /// Relative or absolute URL where all assets are served from
