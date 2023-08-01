@@ -130,7 +130,7 @@
       $css: nth($breakpoints, $i);
       $breakpoint: list.nth($css, 1);
       $breakpoint-value: list.nth($css, 2);
-      @debug $breakpoint $breakpoint-value;
+      // @debug $breakpoint $breakpoint-value;
 
       // Calculate and set the intermediate CSS property values using linear interpolation.
       @media (min-width: #{$breakpoint-value}) {
@@ -155,7 +155,7 @@
                 ($max - $min)
             );
             // @debug "bp:" $breakpoint-value "max-bp:" $breakpoint-value2 "min:"
-            // $min "max:" $max "value:" $value;
+            //   $min "max:" $max "value:" $value;
 
             #{$key1}: #{$value};
           }
