@@ -83,6 +83,7 @@
 }
 
 // Custom mixin to apply responsive styles based on two breakpoints. It calculates intermediate values on the intermediate breakpoints.
+
 @mixin respond-to-auto($breakpoint1, $css1, $breakpoint2, $css2) {
   // Fetch the pixel values for the first and second breakpoints.
   $breakpoint-value1: map-get($breakpoints, $breakpoint1);
@@ -113,13 +114,18 @@
   // Start the loop from the index of the first breakpoint and iterate until the second breakpoint.
   $i: $breakpoint1-idx;
   @while ($i <= $breakpoint2-idx) {
-    @if $i == $breakpoint1-idx {
+    // Check if the current iteration is the first breakpoint itself or is beyond the first breakpoint.
+    @if ($breakpoint1-idx == 1 and $i == $breakpoint1-idx) {
+      // Output the CSS properties for the first breakpoint.
+      // If $breakpoint1 = the first breakpoint, directly output the CSS properties without applying linear interpolation.
       @each $key1, $value1 in $css1 {
         #{$key1}: #{$value1};
       }
-    }
-    // Check if the current iteration is beyond the first breakpoint.
-    @else if $i > $breakpoint1-idx {
+    } @else if
+      ($breakpoint1-idx > 1 and $i == $breakpoint1-idx) or
+      ($i >$breakpoint1-idx)
+    {
+      // For breakpoints beyond the first breakpoint, and for the first breakpoint itself when $breakpoint1 is not the first one:
       // Fetch the CSS properties and values for the current breakpoint.
       $css: nth($breakpoints, $i);
       $breakpoint: list.nth($css, 1);
@@ -148,8 +154,8 @@
                 ($breakpoint-value2 - $breakpoint-value1) *
                 ($max - $min)
             );
-            @debug "bp:" $breakpoint-value "max-bp:" $breakpoint-value2 "min:"
-              $min "max:" $max "value:" $value;
+            // @debug "bp:" $breakpoint-value "max-bp:" $breakpoint-value2 "min:"
+            // $min "max:" $max "value:" $value;
 
             #{$key1}: #{$value};
           }
