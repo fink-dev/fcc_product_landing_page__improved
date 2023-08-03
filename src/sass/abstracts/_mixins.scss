@@ -82,27 +82,34 @@
   @include respond-to-auto(xs, $css1, $breakpoint2, $css2);
 }
 
-// Custom mixin to apply responsive styles based on two breakpoints. It calculates intermediate values on the intermediate breakpoints.
+/// Custom mixin to apply responsive styles based on two breakpoints. It calculates intermediate values on the intermediate breakpoints.
 
-@mixin respond-to-auto($breakpoint1, $css1, $breakpoint2, $css2) {
-  // Fetch the pixel values for the first and second breakpoints.
-  $breakpoint-value1: map-get($breakpoints, $breakpoint1);
+@mixin respond-to-auto(
+  $prm-breakpoint1-name,
+  $prm-styles1,
+  $prm-breakpoint2-name,
+  $prm-styles2
+) {
+  ///
+
+  /// Fetch the pixel values for the first and second breakpoints.
+  $bp1_pixel: map-get($breakpoints, $prm-breakpoint1-name);
   // @debug $breakpoint-value1;
-  $breakpoint-value2: map-get($breakpoints, $breakpoint2);
+  $bp2_pixel: map-get($breakpoints, $prm-breakpoint2-name);
   // @debug $breakpoint-value2;
 
   // Initialize variables to store the indices of the breakpoints.
-  $breakpoint1-idx: null;
-  $breakpoint2-idx: null;
+  $bp1_idx: null;
+  $bp2_idx: null;
   $i: 1;
 
-  // Find the indices of the first and second breakpoints in the $breakpoints map.
+  /// Find the indices of the first and second breakpoints in the $breakpoints map.
   @each $key, $val in $breakpoints {
     // @debug $key $i;
-    @if $key == $breakpoint1 {
-      $breakpoint1-idx: $i;
-    } @else if $key == $breakpoint2 {
-      $breakpoint2-idx: $i;
+    @if $key == $prm-breakpoint1-name {
+      $bp1_idx: $i;
+    } @else if $key == $prm-breakpoint2-name {
+      $bp2_idx: $i;
     }
 
     $i: $i + 1;
@@ -111,53 +118,51 @@
   // @debug 'breakpoint1-idx' $breakpoint1-idx;
   // @debug 'breakpoint2-idx' $breakpoint2-idx;
 
-  // Start the loop from the index of the first breakpoint and iterate until the second breakpoint.
-  $i: $breakpoint1-idx;
-  @while ($i <= $breakpoint2-idx) {
+  /// Start the loop from the index of the first breakpoint and iterate until the second breakpoint.
+  $i: $bp1_idx;
+  @while ($i <= $bp2_idx) {
     // Check if the current iteration is the first breakpoint itself or is beyond the first breakpoint.
-    @if ($breakpoint1-idx == 1 and $i == $breakpoint1-idx) {
-      // Output the CSS properties for the first breakpoint.
-      // If $breakpoint1 = the first breakpoint, directly output the CSS properties without applying linear interpolation.
-      @each $key1, $value1 in $css1 {
-        #{$key1}: #{$value1};
+    @if ($bp1_idx == 1 and $i == $bp1_idx) {
+      ///
+
+      /// If $breakpoint1 = the first breakpoint on the breakpoints map,
+      /// directly output the CSS properties without applying linear interpolation nor media query.
+      @each $prop, $value in $prm-styles1 {
+        #{$prop}: #{$value};
       }
-    } @else if
-      ($breakpoint1-idx > 1 and $i == $breakpoint1-idx) or
-      ($i >$breakpoint1-idx)
-    {
-      // For breakpoints beyond the first breakpoint, and for the first breakpoint itself when $breakpoint1 is not the first one:
-      // Fetch the CSS properties and values for the current breakpoint.
-      $css: nth($breakpoints, $i);
-      $breakpoint: list.nth($css, 1);
-      $breakpoint-value: list.nth($css, 2);
+    } @else if ($bp1_idx > 1 and $i == $bp1_idx) or ($i > $bp1_idx) {
+      //
+
+      /// If the first breakpoint >= the first breakpoint on the breakpoints map:
+      /// Fetch the CSS properties and values for the current breakpoint.
+      $breakpoint: nth($breakpoints, $i);
+      $bp_i_name: list.nth($breakpoint, 1);
+      $bp_i_pixel: list.nth($breakpoint, 2);
       // @debug $breakpoint $breakpoint-value;
 
-      // Calculate and set the intermediate CSS property values using linear interpolation.
-      @media (min-width: #{$breakpoint-value}) {
-        @each $key1, $value1 in $css1 {
+      /// Calculate and set the intermediate CSS property values using linear interpolation.
+      @media (min-width: #{$bp_i_pixel}) {
+        @each $prop, $value in $prm-styles1 {
           // @debug $key1 $value1 type-of($value1);
 
-          $min: $value1;
-          $max: map-get($css2, $key1);
+          $min: $value;
+          $max: map-get($prm-styles2, $prop);
 
-          /// min & max must not be null and both type should be number
-          @if $min!=null and
-            type-of($min) ==
-            "number" and
-            $max!=null and
-            type-of($max) ==
-            "number"
+          /// min & max must not be null and both type must be number
+          @if ($min!=null and (type-of($min) == "number")) and
+            ($max!=null and (type-of($max) == "number"))
           {
             $value: calc(
               $min +
-                ($breakpoint-value - $breakpoint-value1) /
-                ($breakpoint-value2 - $breakpoint-value1) *
+                ($bp_i_pixel - $bp1_pixel) /
+                ($bp2_pixel - $bp1_pixel) *
                 ($max - $min)
             );
+
             // @debug "bp:" $breakpoint-value "max-bp:" $breakpoint-value2 "min:"
             //   $min "max:" $max "value:" $value;
 
-            #{$key1}: #{$value};
+            #{$prop}: #{$value};
           }
         }
       }
