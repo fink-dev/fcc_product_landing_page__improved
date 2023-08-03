@@ -46,11 +46,7 @@
   // @error "$raw-query: #{$raw-query}";
 
   @if $raw-query {
-    $query: if(
-      type-of($raw-query) == "string",
-      unquote($raw-query),
-      inspect($raw-query)
-    );
+    $query: if(type-of($raw-query) == "string", unquote($raw-query), inspect($raw-query));
 
     @media (min-width: #{$query}) {
       @content;
@@ -84,12 +80,7 @@
 
 /// Custom mixin to apply responsive styles based on two breakpoints. It calculates intermediate values on the intermediate breakpoints.
 
-@mixin respond-to-auto(
-  $prm-breakpoint1-name,
-  $prm-styles1,
-  $prm-breakpoint2-name,
-  $prm-styles2
-) {
+@mixin respond-to-auto($prm-breakpoint1-name, $prm-styles1, $prm-breakpoint2-name, $prm-styles2) {
   ///
 
   /// Fetch the pixel values for the first and second breakpoints.
@@ -149,15 +140,8 @@
           $max: map-get($prm-styles2, $prop);
 
           /// min & max must not be null and both type must be number
-          @if ($min!=null and (type-of($min) == "number")) and
-            ($max!=null and (type-of($max) == "number"))
-          {
-            $value: calc(
-              $min +
-                ($bp_i_pixel - $bp1_pixel) /
-                ($bp2_pixel - $bp1_pixel) *
-                ($max - $min)
-            );
+          @if ($min!=null and (type-of($min) == "number")) and ($max!=null and (type-of($max) == "number")) {
+            $value: calc($min + ($bp_i_pixel - $bp1_pixel) / ($bp2_pixel - $bp1_pixel) * ($max - $min));
 
             // @debug "bp:" $breakpoint-value "max-bp:" $breakpoint-value2 "min:"
             //   $min "max:" $max "value:" $value;
