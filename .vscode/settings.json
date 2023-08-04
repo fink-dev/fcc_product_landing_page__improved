@@ -1,3 +1,17 @@
 {
-  "CSSNavigation.activeCSSFileExtensions": ["scss", "sass", "less"]
+  "CSSNavigation.activeCSSFileExtensions": [
+    "scss",
+    "sass",
+    "less"
+  ],
+  "liveSassCompile.settings.formats": [
+    {
+      "format": "expanded",
+      "extensionName": ".css",
+      "savePath": "/public/css",
+      "savePathReplacementPairs": null
+    }
+  ],
+  "liveSassCompile.settings.forceBaseDirectory": "/src",  
+  "liveServer.settings.root": "/public",
 }
