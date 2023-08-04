@@ -48,26 +48,36 @@ body {
   }
 
   &__shape-vert {
-    width: 4.2rem;
-    height: 8rem;
+    // width: 5.4rem;
+    // height: 8rem;
+    // margin-bottom: 3.4%;
     background-color: $color-brown-shadow;
+    // width: max(4.2rem, 8%);
+    // height: max(8rem);
 
-    // @include respond-to(xxl) {
-    //   width: 5.3rem;
-    //   height: 10.8rem;
-    // }
+    // @include respond-to-multiple((
+    //   md: (width:9.3%)
+    // ));
     @include respond-to-auto(
       xs,
       (
-        width: 4.2rem,
+        width: 4.6rem,
         height: 8rem,
+        margin-bottom:1.4rem
       ),
       xxl,
       (
-        width: 5.3rem,
-        height: 10.8rem,
+        width: 5.4rem,
+        height: 9.8rem,
+        margin-bottom:1.9rem
       )
     );
+  }
+
+  & .test-percent {
+    width: 50%;
+    height: 50%;
+    background-color: red;
   }
 
   &__icon-infinity {
@@ -78,38 +88,56 @@ body {
     //   width: 5.4rem;
     //   height: 5.3rem;
     // }
+    
+
+    & img {
+      width: 100%;
+      height: 100%;
+    }
+
     @include respond-to-auto-xs(
       (
-        width: 4.2rem,
-        height: 4.2rem,
+        width: 4.6rem,
+        height: auto,
+        margin-bottom: 0.6rem
       ),
       xxl,
       (
         width: 5.4rem,
-        height: 5.3rem,
+        height: auto,
+        margin-bottom: 1rem
       )
     );
   }
   &__subtitle {
-    margin-bottom: 0.8rem;
+    margin-bottom: 0.6rem;
     color: $color-hero-subtitle;
     font-weight: 600;
-    font-size: 1.4rem;
-    letter-spacing: 0.4rem;
+    
+    @include respond-to-auto-xs((
+      font-size: 1.4rem,
+      letter-spacing: 0.5rem  
+      ), 
+      xxl,
+      (
+        letter-spacing: 0.6rem,
+        font-size: 1.7rem,    
+      )
+    )
 
-    @include respond-to(lg) {
-      font-size: 1.64rem;
-    }
-    @include respond-to(xl) {
-      font-size: 1.9rem;
-    }
-    @include respond-to(xxl) {
-      font-size: 1.9rem;
-    }
+
+    // @include respond-to-auto-xs(lg) {
+      
+    //   font-size: 1.64rem;
+    // }
+    // @include respond-to(xxl) {
+    //   letter-spacing: 0.6rem;
+    //   font-size: 1.7rem;
+    // }
   }
   &__title {
     max-width: 36rem;
-    margin-bottom: 4.4rem;
+    margin-bottom: 3rem;
     // background-color: orange;/
     color: $color-hero-title;
     // font-size: 4rem;
@@ -123,11 +151,11 @@ body {
 
     @include respond-to-auto-xs(
       (
-        font-size: 4rem,
+        font-size: 4.5rem,
       ),
       xxl,
       (
-        font-size: 5rem,
+        font-size: 5.3rem,
       )
     );
 
@@ -142,15 +170,21 @@ body {
     // }
   }
 
-  &__horizontal-line {
+  &_horz-line-box {
+    // margin-bottom: 1.8rem;
+    height: 1px;
+  }
+
+  &__horz-line {
     $width: 300rem;
 
     height: 1px;
     width: $width;
     position: absolute;
+    // margin-bottom: 5rem;
     // left: 0;
-    transform: translateX(calc(19rem - #{$width})) translateY(-1.4rem);
-    margin-bottom: 5rem;
+    // transform: translateX(calc(19rem - #{$width})) translateY(-1.8rem);
+    transform: translateX(calc(19rem - #{$width}));
     background-color: $color-brown-cashmere;
 
     // @include respond-to(lg) {
@@ -161,14 +195,27 @@ body {
     //   transform: translateX(calc(23.5rem - #{$width})) translateY(-1.5rem);
     // }
 
-    @include respond-to-multiple(
+    // @include respond-to-multiple(
+    //   (
+    //     sm: (
+    //       width: $width + 1.7rem
+    //         //transform: translateX(calc(21rem - #{$width})) translateY(-1.5rem),,,,,,,,,,,,,,,
+    //     ),
+    //     xl: (
+    //       width: $width + 4.5rem
+    //         //transform: translateX(calc(23.5rem - #{$width})) translateY(-1.5rem),,,,,
+    //     ),
+    //   )
+    // );
+
+    @include respond-to-auto(
+      sm,
       (
-        lg: (
-          transform: translateX(calc(21rem - #{$width})) translateY(-1.5rem),
-        ),
-        xl: (
-          transform: translateX(calc(23.5rem - #{$width})) translateY(-1.5rem),
-        ),
+        width: $width + 1.7rem,
+      ),
+      xl,
+      (
+        width: $width + 4.2rem,
       )
     );
   }
@@ -176,6 +223,7 @@ body {
   &__paragraph {
     max-width: 100%;
     line-height: 152%;
+    margin-block: 1.6rem;
     // margin-right: ;
 
     @include respond-to(sm) {

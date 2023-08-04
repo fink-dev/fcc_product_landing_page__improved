@@ -8,7 +8,7 @@
  */
 html {
   box-sizing: border-box;
-  font-size: percentage(calc(10 / 16 * (16 / 16)));
+  font-size: percentage(calc(10 / 16 * (14 / 16)));
 
   @include respond-to(md) {
     font-size: percentage(calc(10 / 16 * (16 / 16)));
