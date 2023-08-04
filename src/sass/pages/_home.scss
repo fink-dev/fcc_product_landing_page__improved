@@ -58,20 +58,23 @@ body {
     // @include respond-to-multiple((
     //   md: (width:9.3%)
     // ));
-    @include respond-to-auto(
-      xs,
-      (
-        width: 4.6rem,
-        height: 8rem,
-        margin-bottom:1.4rem
-      ),
-      xxl,
-      (
-        width: 5.4rem,
-        height: 9.8rem,
-        margin-bottom:1.9rem
-      )
-    );
+    width: 4.6rem;
+    height: 8rem;
+    margin-bottom: 1.5rem;
+    // @include respond-to-auto(
+    //   xs,
+    //   (
+    //     width: 4.6rem,
+    //     height: 8rem,
+    //     margin-bottom:1.5rem
+    //   ),
+    //   xxl,
+    //   (
+    //     width: 5.4rem,
+    //     height: 9.3rem,
+    //     margin-bottom:1.7rem
+    //   )
+    // );
   }
 
   & .test-percent {
@@ -88,46 +91,49 @@ body {
     //   width: 5.4rem;
     //   height: 5.3rem;
     // }
-    
+    width: 4.6rem;
+    height: auto;
+    margin-bottom: 0.6rem;
 
     & img {
       width: 100%;
       height: 100%;
     }
 
-    @include respond-to-auto-xs(
-      (
-        width: 4.6rem,
-        height: auto,
-        margin-bottom: 0.6rem
-      ),
-      xxl,
-      (
-        width: 5.4rem,
-        height: auto,
-        margin-bottom: 1rem
-      )
-    );
+    // @include respond-to-auto-xs(
+    //   (
+    //     width: 4.6rem,
+    //     height: auto,
+    //     margin-bottom: 0.6rem
+    //   ),
+    //   xxl,
+    //   (
+    //     width: 5.4rem,
+    //     height: auto,
+    //     margin-bottom: 0.9rem
+    //   )
+    // );
   }
   &__subtitle {
-    margin-bottom: 0.6rem;
+    margin-bottom: 0.55rem;
     color: $color-hero-subtitle;
     font-weight: 600;
-    
-    @include respond-to-auto-xs((
-      font-size: 1.4rem,
-      letter-spacing: 0.5rem  
-      ), 
-      xxl,
-      (
-        letter-spacing: 0.6rem,
-        font-size: 1.7rem,    
-      )
-    )
+    font-size: 1.6rem;
+    letter-spacing: 0.5rem;
 
+    // @include respond-to-auto-xs((
+    //   font-size: 1.4rem,
+    //   letter-spacing: 0.5rem
+    //   ),
+    //   xxl,
+    //   (
+    //     letter-spacing: 0.6rem,
+    //     font-size: 1.7rem,
+    //   )
+    // )
 
     // @include respond-to-auto-xs(lg) {
-      
+
     //   font-size: 1.64rem;
     // }
     // @include respond-to(xxl) {
@@ -136,28 +142,29 @@ body {
     // }
   }
   &__title {
-    max-width: 36rem;
+    max-width: 38rem;
     margin-bottom: 3rem;
     // background-color: orange;/
     color: $color-hero-title;
     // font-size: 4rem;
     font-weight: 800;
     line-height: 107%;
+    font-size: 4.7rem;
 
     @include respond-to(lg) {
       //   font-size: 4.5rem;
       max-width: 40rem;
     }
 
-    @include respond-to-auto-xs(
-      (
-        font-size: 4.5rem,
-      ),
-      xxl,
-      (
-        font-size: 5.3rem,
-      )
-    );
+    // @include respond-to-auto-xs(
+    //   (
+    //     font-size: 4.5rem,
+    //   ),
+    //   xxl,
+    //   (
+    //     font-size: 5rem,
+    //   )
+    // );
 
     // @include respond-to(xl) {
     //   font-size: 5rem;
@@ -171,7 +178,7 @@ body {
   }
 
   &_horz-line-box {
-    // margin-bottom: 1.8rem;
+    /// margin-bottom: 1.8rem;
     height: 1px;
   }
 
@@ -184,7 +191,7 @@ body {
     // margin-bottom: 5rem;
     // left: 0;
     // transform: translateX(calc(19rem - #{$width})) translateY(-1.8rem);
-    transform: translateX(calc(19rem - #{$width}));
+    transform: translateX(calc(20rem - #{$width}));
     background-color: $color-brown-cashmere;
 
     // @include respond-to(lg) {
@@ -198,26 +205,26 @@ body {
     // @include respond-to-multiple(
     //   (
     //     sm: (
-    //       width: $width + 1.7rem
-    //         //transform: translateX(calc(21rem - #{$width})) translateY(-1.5rem),,,,,,,,,,,,,,,
+    //       width: calc($width - 10rem)
+    //         //transform: translateX(calc(21rem - #{$width})) translateY(-1.5rem),,,,,,,,,,,,,,,,,,,,,,,,,,,,,
     //     ),
     //     xl: (
     //       width: $width + 4.5rem
-    //         //transform: translateX(calc(23.5rem - #{$width})) translateY(-1.5rem),,,,,
+    //         //transform: translateX(calc(23.5rem - #{$width})) translateY(-1.5rem),,,,,,,,,,,,,,,,,,,
     //     ),
     //   )
     // );
 
-    @include respond-to-auto(
-      sm,
-      (
-        width: $width + 1.7rem,
-      ),
-      xl,
-      (
-        width: $width + 4.2rem,
-      )
-    );
+    // @include respond-to-auto(
+    //   sm,
+    //   (
+    //     width: $width + 1.2rem,
+    //   ),
+    //   xl,
+    //   (
+    //     width: $width + 3.2rem,
+    //   )
+    // );
   }
 
   &__paragraph {

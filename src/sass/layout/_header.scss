@@ -56,14 +56,14 @@
 
   /* for showing nav links */
   @include respond-to(md) {
-    width: 57%;
-  }
-  @include respond-to(lg) {
-    width: 50%;
-  }
-  @include respond-to(xl) {
     width: 45%;
   }
+  // @include respond-to(lg) {
+  //   width: 50%;
+  // }
+  // @include respond-to(xl) {
+  //   width: 45%;
+  // }
 
   &__links-container {
     width: 100%;
@@ -88,7 +88,8 @@
   }
 
   &__link {
-    font-weight: 700;
+    font-size: 1.55rem;
+    font-weight: 600;
     transition: 0.5s;
 
     &:link,
