@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "copy:html": "cpx \"src/**/*.{html,jpg,png,svg}\" public --watch",
-    "compile:sass": "sass src/sass:public/css --watch",
+    "compile:sass": "sass src/sass:public/css --watch --source-map-urls=absolute",
     "copy": "npm-run-all --parallel copy:*",
     "start": "npm-run-all --parallel copy:* compile:*"
   },
