@@ -11,11 +11,19 @@ html {
   font-size: percentage(calc(10 / 16 * (14 / 16)));
 
   @include respond-to(md) {
-    font-size: percentage(calc(10 / 16 * (16 / 16)));
+    font-size: percentage(calc(10 / 16 * (14.5 / 16)));
   }
 
   @include respond-to(lg) {
     font-size: percentage(calc(10 / 16)); /// 1rem = 16px;
+  }
+
+  @include respond-to(xl) {
+    font-size: percentage(calc(10 / 16) * (16.5 /16)); /// 1rem = 16px;
+  }
+
+  @include respond-to(xxl) {
+    font-size: percentage(calc(10 / 16) * (17 /16)); /// 1rem = 16px;
   }
 }
 

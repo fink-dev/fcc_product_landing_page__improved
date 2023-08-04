@@ -46,7 +46,11 @@
   // @error "$raw-query: #{$raw-query}";
 
   @if $raw-query {
-    $query: if(type-of($raw-query) == "string", unquote($raw-query), inspect($raw-query));
+    $query: if(
+      type-of($raw-query) == "string",
+      unquote($raw-query),
+      inspect($raw-query)
+    );
 
     @media (min-width: #{$query}) {
       @content;
@@ -80,13 +84,20 @@
 
 /// Custom mixin to apply responsive styles based on two breakpoints. It calculates intermediate values on the intermediate breakpoints.
 
-@mixin respond-to-auto($prm-breakpoint1-name, $prm-styles1, $prm-breakpoint2-name, $prm-styles2) {
+@mixin respond-to-auto(
+  $prm-breakpoint1-name,
+  $prm-styles1,
+  $prm-breakpoint2-name,
+  $prm-styles2
+) {
   ///
 
   /// Fetch the pixel values for the first and second breakpoints.
   $bp1_pixel: map-get($breakpoints, $prm-breakpoint1-name);
+  $auto_size_1: map-get($respond-auto-sizes, $prm-breakpoint1-name);
   // @debug $breakpoint-value1;
   $bp2_pixel: map-get($breakpoints, $prm-breakpoint2-name);
+  $auto_size_2: map-get($respond-auto-sizes, $prm-breakpoint2-name);
   // @debug $breakpoint-value2;
 
   // Initialize variables to store the indices of the breakpoints.
@@ -97,6 +108,7 @@
   /// Find the indices of the first and second breakpoints in the $breakpoints map.
   @each $key, $val in $breakpoints {
     // @debug $key $i;
+
     @if $key == $prm-breakpoint1-name {
       $bp1_idx: $i;
     } @else if $key == $prm-breakpoint2-name {
@@ -113,6 +125,7 @@
   $i: $bp1_idx;
   @while ($i <= $bp2_idx) {
     // Check if the current iteration is the first breakpoint itself or is beyond the first breakpoint.
+
     @if ($bp1_idx == 1 and $i == $bp1_idx) {
       ///
 
@@ -129,6 +142,7 @@
       $breakpoint: nth($breakpoints, $i);
       $bp_i_name: list.nth($breakpoint, 1);
       $bp_i_pixel: list.nth($breakpoint, 2);
+      $auto_size_i: map-get($respond-auto-sizes, $bp_i_name);
       // @debug $breakpoint $breakpoint-value;
 
       /// Calculate and set the intermediate CSS property values using linear interpolation.
@@ -140,8 +154,16 @@
           $max: map-get($prm-styles2, $prop);
 
           /// min & max must not be null and both type must be number
-          @if ($min!=null and (type-of($min) == "number")) and ($max!=null and (type-of($max) == "number")) {
-            $value: calc($min + ($bp_i_pixel - $bp1_pixel) / ($bp2_pixel - $bp1_pixel) * ($max - $min));
+          @if ($min!=null and (type-of($min) == "number")) and
+            ($max!=null and (type-of($max) == "number"))
+          {
+            // $value: calc($min + ($bp_i_pixel - $bp1_pixel) / ($bp2_pixel - $bp1_pixel) * ($max - $min));
+            $value: calc(
+              $min +
+                ($auto_size_i - $auto_size_1) /
+                ($auto_size_2 - $auto_size_1) *
+                ($max - $min)
+            );
 
             // @debug "bp:" $breakpoint-value "max-bp:" $breakpoint-value2 "min:"
             //   $min "max:" $max "value:" $value;
