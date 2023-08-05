@@ -37,6 +37,7 @@ body {
     // @include respond-to(xxl) {
     //   padding-bottom: 16.2rem;
     // }
+    ///TODO: fix top and bottom space
     @include respond-to-auto(
       xs,
       (
@@ -63,6 +64,8 @@ body {
     width: 4.6rem;
     // height: 6rem;
     margin-bottom: 1.5rem;
+
+    ///TODO: fix top and bottom space
     @include respond-to-auto(
       xs,
       (
