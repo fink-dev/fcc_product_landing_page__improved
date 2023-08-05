@@ -19,11 +19,11 @@ html {
   }
 
   @include respond-to(xl) {
-    font-size: percentage(calc(10 / 16) * (16.5 /16)); /// 1rem = 16px;
+    font-size: percentage(calc(10 / 16 * (16.5 / 16))); /// 1rem = 16px;
   }
 
   @include respond-to(xxl) {
-    font-size: percentage(calc(10 / 16) * (17 /16)); /// 1rem = 16px;
+    font-size: percentage(calc(10 / 16 * (17 / 16))); /// 1rem = 16px;
   }
 }
 
