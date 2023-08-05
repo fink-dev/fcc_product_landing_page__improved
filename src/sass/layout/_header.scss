@@ -91,16 +91,35 @@
     font-size: 1.55rem;
     font-weight: 600;
     transition: 0.5s;
+    position: relative;
+
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: -0.5rem;
+      left: 50%;
+      display: inline-block;
+      height: 1px;
+      width: 0;
+      background-color: $color-brown-cafe_noir;
+      // width: 100%;
+      transition: 0.4s ease-out;
+    }
 
     &:link,
     &:visited {
       color: $color-nav-link;
       text-decoration: none;
     }
-    &:hover,&:active {
-      color: $color-nav-link-hover;
-      // text-decoration: underline;
+    &:hover,
+    &:active {
+      // color: $color-nav-link-hover;
 
+      &::after {
+        width: 100%;
+        left: 0;
+      }
+      // text-decoration: underline;
     }
   }
 }
