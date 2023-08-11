@@ -10,7 +10,9 @@
     "build:sass": "sass src/sass:public/css --no-source-map",
     "copy": "npm-run-all --parallel copy:*",
     "start": "npm-run-all --parallel watch:*",
-    "build": "npm-run-all build:* copy:html"
+    "debug:postbuild": "postcss public/css/*.css -d debug_css_postbuild --no-map",
+    "build": "npm-run-all build:* copy:html",
+    "postbuild": "postcss public/css/*.css -r --no-map"
   },
   "keywords": [
     "html",
@@ -20,10 +22,15 @@
   "author": "fin-k",
   "license": "ISC",
   "devDependencies": {
+    "autoprefixer": "^10.4.14",
     "copyfiles": "^2.4.1",
     "cpx2": "^5.0.0",
+    "cssnano": "^6.0.1",
     "npm-run-all": "^4.1.5",
     "onchange": "^7.1.0",
+    "postcss": "^8.4.27",
+    "postcss-cli": "^10.1.0",
+    "postcss-sort-media-queries": "^5.2.0",
     "sass": "^1.64.2"
   }
 }
