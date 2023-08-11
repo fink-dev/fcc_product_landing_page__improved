@@ -2,13 +2,15 @@
   "name": "product_landing_page",
   "version": "1.0.0",
   "description": "FCC responsive web challenge to create product landing page",
-  "main": "public/index.html",
+  "main": "src/index.html",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "copy:html": "cpx \"src/**/*.{html,jpg,png,svg}\" public --watch",
-    "compile:sass": "sass src/sass:public/css --watch --source-map-urls=absolute",
+    "watch:sass": "sass src/sass:src/css --watch --source-map-urls=relative",
+    "copy:html": "cpx \"src/**/*.{html,jpg,png,svg}\" public",
+    "build:sass": "sass src/sass:public/css --no-source-map",
     "copy": "npm-run-all --parallel copy:*",
-    "start": "npm-run-all --parallel copy:* compile:*"
+    "start": "npm-run-all --parallel watch:*",
+    "build": "npm-run-all build:* copy:html"
   },
   "keywords": [
     "html",
