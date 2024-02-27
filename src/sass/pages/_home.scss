@@ -12,6 +12,7 @@ body {
   &__container {
     display: flex;
     flex-direction: column;
+    gap: 1.5rem;
 
     @include respond-to(md) {
       display: grid;
@@ -63,7 +64,7 @@ body {
     // ));
     width: 4.6rem;
     // height: 6rem;
-    margin-bottom: 1.25rem;
+    margin-bottom: 1.15rem;
     
     @include respond-to-auto(
       xs,
@@ -123,7 +124,7 @@ body {
     @include respond-to-auto-xs(
       (
       font-size: 1.4rem,
-      letter-spacing: 0.45rem,
+      letter-spacing: 0.44rem,
       margin-bottom: 1rem
       ),
       xxl,
@@ -235,7 +236,7 @@ body {
   &__paragraph {
     max-width: 100%;
     line-height: 152%;
-    margin-block: 1.6rem;
+    margin-block: 2.4rem;
     // margin-right: ;
 
     @include respond-to(sm) {
@@ -243,10 +244,10 @@ body {
     }
 
     @include respond-to(md) {
-      max-width: 90%;
+      max-width: 85%;
     }
     @include respond-to(lg) {
-      max-width: 100%;
+      max-width: 85%;
     }
   }
 
