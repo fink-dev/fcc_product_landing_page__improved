@@ -5,11 +5,13 @@
   "main": "src/index.html",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "watch:sass": "sass src/sass:src/css --watch --source-map-urls=relative",
+    "watch:sass": "sass src/sass:public/css --watch --source-map-urls=relative",
     "copy:html": "cpx \"src/**/*.{html,jpg,png,svg}\" public",
+    "watch:html": "cpx \"src/**/*.{html,jpg,png,svg}\" public --watch",
     "build:sass": "sass src/sass:public/css --no-source-map",
+    "serve": "browser-sync start --server --files public/**/* public/*.*",
     "copy": "npm-run-all --parallel copy:*",
-    "start": "npm-run-all --parallel watch:*",
+    "start": "npm-run-all --parallel watch:* serve",
     "debug:postbuild": "postcss public/css/*.css -d debug_css_postbuild --no-map",
     "build": "npm-run-all build:* copy:html",
     "postbuild": "postcss public/css/*.css -r --no-map"
