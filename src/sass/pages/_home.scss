@@ -63,30 +63,30 @@ body {
     // ));
     width: 4.6rem;
     // height: 6rem;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.25rem;
 
     ///TODO: fix top and bottom space
     @include respond-to-auto(
       xs,
       (
         // width: 4.6rem,
-        height: 5rem,
+        height: 8rem,
         // margin-bottom:1.5rem
       ),
       xxl,
       (
         // width: 5.4rem,
-        height: 11rem,
+        height: 7.5rem,
         // margin-bottom:1.7rem
       )
     );
   }
 
-  & .test-percent {
-    width: 50%;
-    height: 50%;
-    background-color: red;
-  }
+  // & .test-percent {
+  //   width: 50%;
+  //   height: 50%;
+  //   background-color: red;
+  // }
 
   &__icon-infinity {
     // width: 4.2rem;
@@ -98,44 +98,42 @@ body {
     // }
     width: 4.6rem;
     height: auto;
-    margin-bottom: 0.6rem;
-
+    
     & img {
       width: 100%;
       height: 100%;
     }
-
-    // @include respond-to-auto-xs(
-    //   (
-    //     width: 4.6rem,
-    //     height: auto,
-    //     margin-bottom: 0.6rem
-    //   ),
-    //   xxl,
-    //   (
-    //     width: 5.4rem,
-    //     height: auto,
-    //     margin-bottom: 0.9rem
-    //   )
-    // );
+    
+    @include respond-to-auto-xs(
+      (
+        margin-bottom: 2.4rem,        
+      ),
+      xxl,
+      (        
+        margin-bottom: 2.4rem
+      )
+    );
   }
   &__subtitle {
-    margin-bottom: 0.55rem;
+    // margin-bottom: 0.65rem;
     color: $color-hero-subtitle;
     font-weight: 600;
-    font-size: 1.6rem;
+    // font-size: 1.6rem;
     letter-spacing: 0.5rem;
 
-    // @include respond-to-auto-xs((
-    //   font-size: 1.4rem,
-    //   letter-spacing: 0.5rem
-    //   ),
-    //   xxl,
-    //   (
-    //     letter-spacing: 0.6rem,
-    //     font-size: 1.7rem,
-    //   )
-    // )
+    @include respond-to-auto-xs(
+      (
+      font-size: 1.4rem,
+      letter-spacing: 0.5rem,
+      margin-bottom: 1rem
+      ),
+      xxl,
+      (
+        letter-spacing: 0.6rem,
+        font-size: 1.6rem,
+        margin-bottom: 0.9rem
+      )
+    )
 
     // @include respond-to-auto-xs(lg) {
 
@@ -148,28 +146,32 @@ body {
   }
   &__title {
     max-width: 38rem;
-    margin-bottom: 3rem;
+    // margin-bottom: 3rem;
     // background-color: orange;/
     color: $color-hero-title;
     // font-size: 4rem;
     font-weight: 800;
     line-height: 107%;
     font-size: 4.7rem;
+    
 
     @include respond-to(lg) {
       //   font-size: 4.5rem;
       max-width: 40rem;
     }
 
-    // @include respond-to-auto-xs(
-    //   (
-    //     font-size: 4.5rem,
-    //   ),
-    //   xxl,
-    //   (
-    //     font-size: 5rem,
-    //   )
-    // );
+    @include respond-to-auto(
+      xs,
+      (
+        font-size: 4.4rem,
+        margin-bottom: 3.7rem
+      ),
+      xxl,
+      (
+        margin-bottom: 3.5rem,
+        font-size: 4.7rem
+      )
+    );
 
     // @include respond-to(xl) {
     //   font-size: 5rem;
@@ -197,8 +199,17 @@ body {
     // left: 0;
     // transform: translateX(calc(19rem - #{$width})) translateY(-1.8rem);
     transform: translateX(calc(20rem - #{$width}));
-    background-color: $color-brown-cashmere;
-
+    background-color: $color-brown-cashmere;    
+    
+    @include respond-to-auto-xs(      
+      (
+        width: $width - 1.2rem,
+      ),
+      xl,
+      (
+        width: $width,
+      )
+    );
     // @include respond-to(lg) {
     //   transform: translateX(calc(21rem - #{$width})) translateY(-1.5rem);
     // }
@@ -220,16 +231,6 @@ body {
     //   )
     // );
 
-    // @include respond-to-auto(
-    //   sm,
-    //   (
-    //     width: $width + 1.2rem,
-    //   ),
-    //   xl,
-    //   (
-    //     width: $width + 3.2rem,
-    //   )
-    // );
   }
 
   &__paragraph {

@@ -7,7 +7,7 @@
  */
 .clearfix::after {
   clear: both;
-  content: "";
+  content: '';
   display: table;
 }
 
@@ -38,20 +38,7 @@
           max-width: $max-width-xxl,
         ),
       )
-    )
-    // @include respond-to-auto-xs(
-    //   (
-    //     padding-inline: 1.5rem,
-    //   ),
-    //   xxl,
-    //   (
-    //     padding-inline: 4rem,
-    //   )
-    // );
-    // @include test-mixin(123px) {
-    //   max-width: 900px;
-    // };
-;
+    )  
 }
 
 /**

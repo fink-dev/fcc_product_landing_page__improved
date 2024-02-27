@@ -106,7 +106,7 @@
     position: relative;
     font-size: 1.55rem;
     font-weight: 600;
-    transition: 0.5s;
+    transition: 0.4s;
 
     // &::after {
     //   content: "";
@@ -126,10 +126,13 @@
       color: $color-nav-link;
       text-decoration: none;
     }
-    &:hover,
+    &:hover {
+      transform: translateY(-0.25rem);
+
+    }
     &:active {
       // color: $color-nav-link-hover;
-      transform: translateY(-0.25rem);
+      transform: translateY(-0.1rem);
 
       // &::after {
       //   width: 100%;
